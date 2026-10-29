@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+/* ========================================================
+   PREETOM SAHA — EDITORIAL REFERENCE DESIGN SYSTEM
+   Visual Direction: High-Fashion Tech / Brutalist Editorial
+   Palette: Warm Linen Cream + Obsidian Black + Champagne Gold
+======================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Hero Light Theme: Architectural Cream / Warm Linen */
+  --bg-page: #EAE6DF;
+  --bg-alt: #E2DDD5;
+  --bg-card: #F5F2EC;
+  --bg-elevated: #FFFFFF;
+  --bg-dark-section: #090A0D;
+
+  --text-main: #0E0E10;
+  --text-muted: #5E5B56;
+  --text-dark-section: #F3F3F5;
+  --text-dark-muted: #95949C;
+
+  --accent: #0E0E10;
+  --accent-gold: #C5A059;
+  --accent-gold-soft: rgba(197, 160, 89, 0.12);
+  --accent-hover: #26262B;
+  --accent-soft: #DDD8CF;
+  --accent-contrast: #FFFFFF;
+
+  --border-color: rgba(14, 14, 16, 0.12);
+  --border-dark: rgba(255, 255, 255, 0.09);
+  --shadow-color: 0, 0, 0;
+
+  --radius-card: 16px;
+  --radius-button: 9999px;
+
+  --font-display: 'Anton', 'Syne', sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Explicit Dark Theme: Midnight Obsidian + Champagne Gold */
+:root[data-theme="dark"],
+:root.dark {
+  color-scheme: dark;
+
+  --bg-page: #08090B;
+  --bg-alt: #101115;
+  --bg-card: #131418;
+  --bg-elevated: #1B1D23;
+  --bg-dark-section: #050607;
+
+  --text-main: #F4F4F6;
+  --text-muted: #8E8E98;
+  --text-dark-section: #F4F4F6;
+  --text-dark-muted: #8E8E98;
+
+  --accent: #E5C882;
+  --accent-gold: #E5C882;
+  --accent-gold-soft: rgba(229, 200, 130, 0.14);
+  --accent-hover: #F0D99F;
+  --accent-soft: #1E2027;
+  --accent-contrast: #09090C;
+
+  --border-color: rgba(255, 255, 255, 0.09);
+  --border-dark: rgba(255, 255, 255, 0.08);
+  --shadow-color: 0, 0, 0;
+}
+
+/* Automatic Device Theme */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    color-scheme: dark;
+
+    --bg-page: #08090B;
+    --bg-alt: #101115;
+    --bg-card: #131418;
+    --bg-elevated: #1B1D23;
+    --bg-dark-section: #050607;
+
+    --text-main: #F4F4F6;
+    --text-muted: #8E8E98;
+    --text-dark-section: #F4F4F6;
+    --text-dark-muted: #8E8E98;
+
+    --accent: #E5C882;
+    --accent-gold: #E5C882;
+    --accent-gold-soft: rgba(229, 200, 130, 0.14);
+    --accent-hover: #F0D99F;
+    --accent-soft: #1E2027;
+    --accent-contrast: #09090C;
+
+    --border-color: rgba(255, 255, 255, 0.09);
+    --border-dark: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Base resets & typography */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  transition: background-color 300ms ease, color 300ms ease;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.font-serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+.font-mono-tag {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+/* Theme utility classes */
+.bg-theme-page {
+  background-color: var(--bg-page);
+}
+
+.bg-theme-alt {
+  background-color: var(--bg-alt);
+}
+
+.bg-theme-card {
+  background-color: var(--bg-card);
+}
+
+.bg-dark-editorial {
+  background-color: var(--bg-dark-section);
+  color: var(--text-dark-section);
+}
+
+.text-theme-main {
+  color: var(--text-main);
+}
+
+.text-theme-muted {
+  color: var(--text-muted);
+}
+
+.text-theme-accent {
+  color: var(--accent);
+}
+
+.text-gold {
+  color: var(--accent-gold);
+}
+
+.bg-theme-accent {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.border-theme {
+  border-color: var(--border-color);
+}
+
+.border-dark-theme {
+  border-color: var(--border-dark);
+}
+
+/* Reference Grid Lines Background */
+.bg-grid-lines {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+.bg-grid-lines-light {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+}
+
+/* Rotating Stamp Badge Animation */
+@keyframes spin-badge {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-badge {
+  animation: spin-badge 14s linear infinite;
+}
+
+/* Marquee / Ribbon Animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 24s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Golden Arc Loader Animation */
+@keyframes rotate-arc {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate-arc {
+  animation: rotate-arc 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Liquid wavy text effect from video frame 0:25 */
+@keyframes liquid-wave {
+  0%, 100% {
+    transform: scaleY(1) skewX(0deg);
+  }
+  25% {
+    transform: scaleY(1.08) skewX(-2deg);
+  }
+  50% {
+    transform: scaleY(0.96) skewX(1.5deg);
+  }
+  75% {
+    transform: scaleY(1.05) skewX(-1deg);
+  }
+}
+
+.animate-liquid-hover:hover {
+  animation: liquid-wave 0.85s ease-in-out infinite alternate;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
